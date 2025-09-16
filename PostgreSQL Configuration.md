@@ -535,9 +535,10 @@ SELECT
 FROM get_memory_usage();
 ```
 ### ผลการทดลอง
-```
+
 รูปผลการทดลอง
-```
+
+<img width="660" height="187" alt="image" src="https://github.com/user-attachments/assets/a0d2303a-76ec-4561-89d0-b455d83b3e12" />
 
 #### 6.2 การติดตาม Buffer Hit Ratio
 ```sql
@@ -556,10 +557,12 @@ WHERE heap_blks_read + heap_blks_hit > 0
 ORDER BY heap_blks_read + heap_blks_hit DESC;
 ```
 ### ผลการทดลอง
-```
 1. รูปผลการทดลอง
+
+<img width="687" height="111" alt="image" src="https://github.com/user-attachments/assets/f4f52cc2-c2fd-4773-8c91-83801ccb939b" />
+
 2. อธิบายผลลัพธ์ที่ได้
-```
+- 
 #### 6.3 ดู Buffer Hit Ratio ทั้งระบบ
 ```sql
 SELECT datname,

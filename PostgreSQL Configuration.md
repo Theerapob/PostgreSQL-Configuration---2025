@@ -318,9 +318,12 @@ SELECT pg_reload_conf();
 SHOW maintenance_work_mem;
 ```
 ### ผลการทดลอง
-```
+``
 รูปผลการเปลี่ยนแปลงค่า maintenance_work_mem
-```
+
+<img width="304" height="97" alt="image" src="https://github.com/user-attachments/assets/50170e0e-6f21-4ff4-97f9-c880831d92ce" />
+
+``
 
 #### 3.4 ปรับแต่ง WAL Buffers
 ```sql
@@ -343,9 +346,12 @@ docker exec -it postgres-config psql -U postgres
 SHOW wal_buffers;
 ```
 ### ผลการทดลอง
-```
+``
 รูปผลการเปลี่ยนแปลงค่า wal_buffers
-```
+
+<img width="226" height="95" alt="image" src="https://github.com/user-attachments/assets/5e3f423a-81c0-401e-9b8f-90143aa251a0" />
+
+``
 
 #### 3.5 ปรับแต่ง Effective Cache Size
 ```sql
@@ -360,9 +366,12 @@ SELECT pg_reload_conf();
 SHOW effective_cache_size;
 ```
 ### ผลการทดลอง
-```
+``
 รูปผลการเปลี่ยนแปลงค่า effective_cache_size
-```
+
+<img width="338" height="112" alt="image" src="https://github.com/user-attachments/assets/81bc190e-a9aa-42ee-ac61-f015b867561a" />
+
+``
 
 ### Step 4: ตรวจสอบผล
 

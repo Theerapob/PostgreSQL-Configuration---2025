@@ -190,8 +190,11 @@ docker exec postgres-config df -h
 ### บันทึกผลการทดลอง
 ```
 1. อธิบายหน้าที่คำสั่ง docker exec postgres-config free, docker exec postgres-config df
+- - docker exec postgres-config free เป็นคำสั่งในสำหรับดูการใช้หน่วยความจำ RAM ของ container
 2. option -h ในคำสั่งมีผลอย่างไร
+- แสดงผลให้อ่านง่าย โดยใช้ หน่วยที่มนุษย์เข้าใจง่าย เช่น KB → MB → GB ไม่แสดงเป็นตัวเลข byte เยอะ ๆ
 3. docker exec postgres-config nproc  แสดงค่าผลลัพธ์อย่างไร
+- 12
 ```
 #### 1.2 เชื่อมต่อและตรวจสอบสถานะปัจจุบัน
 ```bash
@@ -210,7 +213,9 @@ SHOW data_directory;
 ### บันทึกผลการทดลอง
 ```
 1. ตำแหน่งที่อยู่ของไฟล์ configuration อยู่ที่ตำแหน่งใด
+- /var/lib/postgresql/data/postgresql.conf
 2. ตำแหน่งที่อยู่ของไฟล์ data อยู่ที่ตำแหน่งใด
+- /var/lib/postgresql/data
 ```
 -- ตรวจสอบการตั้งค่าปัจจุบัน
 SELECT name, setting, unit, category, short_desc 

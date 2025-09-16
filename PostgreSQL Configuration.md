@@ -279,7 +279,6 @@ docker exec -it -u postgres postgres-config pg_ctl restart -D /var/lib/postgresq
 
 
 ``
-
 #### 2.2 ปรับแต่ง Work Memory (ไม่ต้อง restart)
 ```sql
 -- ตรวจสอบค่าปัจจุบัน
@@ -299,9 +298,12 @@ FROM pg_settings
 WHERE name = 'work_mem';
 ```
 ### ผลการทดลอง
-```
+``
 รูปผลการเปลี่ยนแปลงค่า work_mem
-```
+
+<img width="441" height="154" alt="image" src="https://github.com/user-attachments/assets/e2ea602f-5b3c-4ac4-974a-7f7510e03ae7" />
+
+``
 
 #### 3.3 ปรับแต่ง Maintenance Work Memory
 ```sql

@@ -562,7 +562,8 @@ ORDER BY heap_blks_read + heap_blks_hit DESC;
 <img width="687" height="111" alt="image" src="https://github.com/user-attachments/assets/f4f52cc2-c2fd-4773-8c91-83801ccb939b" />
 
 2. อธิบายผลลัพธ์ที่ได้
-- 
+- สถิติการเข้าถึงบล็อกข้อมูล บ่งชี้ว่าตาราง large_table อยู่ในหน่วยความจำ (cache) เกือบทั้งหมด (hit ratio 100%) ทำให้การเข้าถึงข้อมูลเป็นไปอย่างรวดเร็วโดยไม่ต้องอ่านจากดิสก์
+```
 #### 6.3 ดู Buffer Hit Ratio ทั้งระบบ
 ```sql
 SELECT datname,
@@ -573,10 +574,14 @@ FROM pg_stat_database
 WHERE datname = current_database();
 ```
 ### ผลการทดลอง
-```
+``
 1. รูปผลการทดลอง
+
+<img width="539" height="117" alt="image" src="https://github.com/user-attachments/assets/30de2e80-3fb2-4035-aaac-c3d9315af697" />
+
 2. อธิบายผลลัพธ์ที่ได้
-```
+- อัตรา Hit Ratio ที่สูงถึง 99.91% นี้ยืนยันว่าโดยรวมแล้วฐานข้อมูล performance_test มีการจัดการหน่วยความจำแคชได้อย่างยอดเยี่ยม ทำให้การทำงานส่วนใหญ่เกิดขึ้นในหน่วยความจำ ไม่ใช่บนดิสก์ ซึ่งเป็นปัจจัยสำคัญของฐานข้อมูลที่มีประสิทธิภาพสูง
+``
 
 #### 6.4 ดู Table ที่มี Disk I/O มาก
 ```sql
@@ -594,10 +599,14 @@ ORDER BY heap_blks_read DESC
 LIMIT 10;
 ```
 ### ผลการทดลอง
-```
+``
 1. รูปผลการทดลอง
+
+<img width="849" height="60" alt="image" src="https://github.com/user-attachments/assets/5cacc43b-a124-4409-a74b-f5635ad87a15" />
+
 2. อธิบายผลลัพธ์ที่ได้
-```
+ขสถิติการเข้าถึงข้อมูลจะว่างเปล่า แต่จากเวลาการทำงานที่แตกต่างกันของทั้งสองแผน
+``
 ### Step 7: การปรับแต่ง Autovacuum
 
 #### 7.1 ทำความเข้าใจ Autovacuum Parameters
@@ -609,10 +618,27 @@ WHERE name LIKE '%autovacuum%'
 ORDER BY name;
 ```
 ### ผลการทดลอง
-```
+``
 1. รูปผลการทดลอง
+
+<img width="1259" height="381" alt="image" src="https://github.com/user-attachments/assets/dbad0780-681a-46e5-bfa8-0d783edcf3a1" />
+
 2. อธิบายค่าต่าง ๆ ที่มีความสำคัญ
-```
+- autovacuum: on - เปิดใช้งานฟีเจอร์นี้
+
+autovacuum_vacuum_threshold: 50 - จำนวนการอัปเดตหรือลบแถวข้อมูลขั้นต่ำ (อย่างน้อย 50 แถว) ก่อนที่ autovacuum จะเริ่มทำงานบนตาราง
+
+autovacuum_vacuum_scale_factor: 0.2 - ตัวคูณเพื่อคำนวณจำนวนการอัปเดตหรือลบแถวข้อมูลที่จำเป็นในการเริ่ม autovacuum โดยคิดเป็นสัดส่วนจากขนาดของตาราง (เช่น 20% ของขนาดตาราง)
+
+autovacuum_analyze_threshold: 50 - จำนวนการเพิ่ม (insert), อัปเดต, หรือลบแถวข้อมูลขั้นต่ำ ก่อนที่ autovacuum จะเริ่มรวบรวมสถิติใหม่ (analyze)
+
+autovacuum_analyze_scale_factor: 0.1 - ตัวคูณเพื่อคำนวณจำนวนการเปลี่ยนแปลงข้อมูลที่จำเป็นในการเริ่ม analyze โดยคิดเป็นสัดส่วนจากขนาดของตาราง (เช่น 10% ของขนาดตาราง)
+
+autovacuum_max_workers: 3 - จำนวน worker process สูงสุดที่สามารถรันพร้อมกันได้เพื่อทำ autovacuum
+
+autovacuum_naptime: 60 s - ระยะเวลาที่ autovacuum จะพักระหว่างการรันแต่ละรอบ
+
+``
 
 #### 7.2 การปรับแต่ง Autovacuum สำหรับประสิทธิภาพ
 ```sql
@@ -639,9 +665,11 @@ ALTER SYSTEM SET autovacuum_work_mem = '512MB';
 SELECT pg_reload_conf();
 ```
 ### ผลการทดลอง
-```
+``
 รูปผลการทดลองการปรับแต่ง Autovacuum (Capture รวมทั้งหมด 1 รูป)
-```
+<img width="618" height="306" alt="image" src="https://github.com/user-attachments/assets/43f25914-33c3-4522-a903-ebb37595426c" />
+
+``
 
 ### Step 8: Performance Testing และ Benchmarking
 

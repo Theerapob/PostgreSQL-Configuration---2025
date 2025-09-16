@@ -626,17 +626,17 @@ ORDER BY name;
 2. อธิบายค่าต่าง ๆ ที่มีความสำคัญ
 - autovacuum: on - เปิดใช้งานฟีเจอร์นี้
 
-autovacuum_vacuum_threshold: 50 - จำนวนการอัปเดตหรือลบแถวข้อมูลขั้นต่ำ (อย่างน้อย 50 แถว) ก่อนที่ autovacuum จะเริ่มทำงานบนตาราง
+- autovacuum_vacuum_threshold: 50 - จำนวนการอัปเดตหรือลบแถวข้อมูลขั้นต่ำ (อย่างน้อย 50 แถว) ก่อนที่ autovacuum จะเริ่มทำงานบนตาราง
 
-autovacuum_vacuum_scale_factor: 0.2 - ตัวคูณเพื่อคำนวณจำนวนการอัปเดตหรือลบแถวข้อมูลที่จำเป็นในการเริ่ม autovacuum โดยคิดเป็นสัดส่วนจากขนาดของตาราง (เช่น 20% ของขนาดตาราง)
+- autovacuum_vacuum_scale_factor: 0.2 - ตัวคูณเพื่อคำนวณจำนวนการอัปเดตหรือลบแถวข้อมูลที่จำเป็นในการเริ่ม autovacuum โดยคิดเป็นสัดส่วนจากขนาดของตาราง (เช่น 20% ของขนาดตาราง)
 
-autovacuum_analyze_threshold: 50 - จำนวนการเพิ่ม (insert), อัปเดต, หรือลบแถวข้อมูลขั้นต่ำ ก่อนที่ autovacuum จะเริ่มรวบรวมสถิติใหม่ (analyze)
+- autovacuum_analyze_threshold: 50 - จำนวนการเพิ่ม (insert), อัปเดต, หรือลบแถวข้อมูลขั้นต่ำ ก่อนที่ autovacuum จะเริ่มรวบรวมสถิติใหม่ (analyze)
 
-autovacuum_analyze_scale_factor: 0.1 - ตัวคูณเพื่อคำนวณจำนวนการเปลี่ยนแปลงข้อมูลที่จำเป็นในการเริ่ม analyze โดยคิดเป็นสัดส่วนจากขนาดของตาราง (เช่น 10% ของขนาดตาราง)
+- autovacuum_analyze_scale_factor: 0.1 - ตัวคูณเพื่อคำนวณจำนวนการเปลี่ยนแปลงข้อมูลที่จำเป็นในการเริ่ม analyze โดยคิดเป็นสัดส่วนจากขนาดของตาราง (เช่น 10% ของขนาดตาราง)
 
-autovacuum_max_workers: 3 - จำนวน worker process สูงสุดที่สามารถรันพร้อมกันได้เพื่อทำ autovacuum
+- autovacuum_max_workers: 3 - จำนวน worker process สูงสุดที่สามารถรันพร้อมกันได้เพื่อทำ autovacuum
 
-autovacuum_naptime: 60 s - ระยะเวลาที่ autovacuum จะพักระหว่างการรันแต่ละรอบ
+- autovacuum_naptime: 60 s - ระยะเวลาที่ autovacuum จะพักระหว่างการรันแต่ละรอบ
 
 ``
 

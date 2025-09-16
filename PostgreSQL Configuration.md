@@ -398,9 +398,12 @@ WHERE name IN (
 ORDER BY name;
 ```
 ### ผลการทดลอง
-```
+``
 รูปผลการลัพธ์การตั้งค่า
-```
+
+<img width="1230" height="158" alt="image" src="https://github.com/user-attachments/assets/f5468761-ea0a-4b45-bae1-cfacff201d86" />
+
+``
 
 ### Step 5: การสร้างและทดสอบ Workload
 
@@ -442,11 +445,15 @@ ORDER BY data
 LIMIT 1000;
 ```
 ### ผลการทดลอง
-```
-1. คำสั่ง EXPLAIN(ANALYZE,BUFFERS) คืออะไร 
+``
+1. คำสั่ง EXPLAIN(ANALYZE,BUFFERS) คืออะไร
+- คำสั่งใน PostgreSQL ที่ใช้ วิเคราะห์ประสิทธิภาพของ SQL query โดยรัน query จริง ๆ และแสดงข้อมูลทั้งหมดรวมกัน
 2. รูปผลการรัน
+
+<img width="1155" height="440" alt="image" src="https://github.com/user-attachments/assets/4a564050-a454-4d94-b5b6-8cdc9c58b17e" />
+
 3. อธิบายผลลัพธ์ที่ได้
-```
+``
 ```sql
 -- ทดสอบ Hash operation
 EXPLAIN (ANALYZE, BUFFERS)

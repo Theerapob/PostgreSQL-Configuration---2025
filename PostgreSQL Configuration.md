@@ -488,10 +488,13 @@ DELETE FROM large_table WHERE id % 10 = 0;
 VACUUM (ANALYZE, VERBOSE) large_table;
 ```
 ### ผลการทดลอง
-```
+
 1. รูปผลการทดลอง จากคำสั่ง VACUUM (ANALYZE, VERBOSE) large_table;
+
+<img width="1184" height="630" alt="image" src="https://github.com/user-attachments/assets/e51305dc-c2ff-4854-9df2-fd58391d7570" />
+
 2. อธิบายผลลัพธ์ที่ได้
-```
+- คำสั่ง VACUUM ANALYZE VERBOSE ได้ทำงานเพื่อ ทำความสะอาดและปรับปรุงสถิติ ของตาราง large_table และตาราง TOAST ที่เกี่ยวข้อง มีการใช้ worker process แบบขนานเพื่อเร่งกระบวนการ vacuum บน index และการวิเคราะห์ข้อมูล (ANALYZE) ก็ถูกดำเนินการเพื่ออัปเดตสถิติของตาราง
 ### Step 6: การติดตาม Memory Usage
 
 #### 6.1 สร้างฟังก์ชันติดตาม Memory

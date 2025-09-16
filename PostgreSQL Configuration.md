@@ -226,9 +226,11 @@ WHERE name IN (
 );
 ```
 ### บันทึกผลการทดลอง
-```
-บันทึกรูปผลของ configuration ทั้ง 6 ค่า 
-```
+``
+บันทึกรูปผลของ configuration ทั้ง 6 ค่า
+![postgresql-configuration](https://github.com/user-attachments/assets/6322fc26-a3c3-4123-a442-1ddbf2336bf4)
+
+``
 
 ### Step 2: การปรับแต่งพารามิเตอร์แบบค่อยเป็นค่อยไป
 
